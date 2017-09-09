@@ -1,3 +1,15 @@
 p{
-    color:#C32929;
+    color:#F11111;
+    text-transform: uppercase;
+    text-decoration: line-through;
+}
+
+#div1{
+    width:300px;
+    height: 300px;
+    border-radius:10px;
+    background-color: #00FF00;
+    border: 5px solid #FF0000;
+    padding:7px;
+    margin: 40px
 }
