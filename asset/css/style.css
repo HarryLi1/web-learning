@@ -9,7 +9,9 @@ p{
     height: 300px;
     border-radius:10px;
     background-color: #00FF00;
-    border: 5px solid #FF0000;
+    border: 5px dotted #FF0000;
     padding:7px;
-    margin: 40px
+    margin: 40px;
+    font-size: 3em;
+    text-shadow: 5px 5px 5px #000000;
 }
