@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- <meta http-equiv="refresh" content="2"> -->
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <!-- <link href='http://fonts.font.im/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+    <style>
+        .calcDiv {
+            width: 370px;
+            height: 370px;
+            background-color: dimgray;
+            margin: 20px auto;
+            color: white;
+        }
+
+        .resultDiv {
+            height: 70px;
+            font-size: 40px;
+            text-align: right;
+            padding: 2px 10px;
+            margin: 3px 12px;
+            background-color: white;
+            color: black;
+            position: relative;
+            top: 10px;
+            overflow: overlay;
+        }
+
+        ul {
+            padding: 5px 10px;
+        }
+
+        li {
+            list-style: none;
+            height: 48px;
+            width: 82px;
+            margin: 1px;
+            padding: 10px 0 0;
+            text-align: center;
+            vertical-align: middle;
+            float: left;
+            border: 1px solid gray;
+            background: gray;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: black;
+            border: 1px solid green;
+        }
+
+        ul {}
+    </style>
+    <script>
+        // document.querySelector("html").onclick = function () {
+        //     alert('clicked');
+        // };
+    </script>
+
+</head>
+
+<body>
+    <div class="calcDiv">
+        <div class="resultDiv">0</div>
+        <div>
+            <ul>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>+</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>-</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>*</li>
+                <li>0</li>
+                <li>C</li>
+                <li>=</li>
+                <li>/</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var resultDiv = document.querySelector(".resultDiv");
+        var needClear = false;
+        var equaled = false;
+
+        function onInput() {
+            var input = this.innerHTML;
+            var result = resultDiv.innerHTML;
+
+            if (needClear) {
+                result = "0";
+                needClear = false;
+            }
+
+            console.log(input);
+
+            var digitalPattern = /\d/;
+            var opPattern = /[\+\-\*\/]/;
+            var eqPattern = /=/;
+            var clearPattern = /C/;
+            if (input.match(digitalPattern)) {
+                if (equaled || result == "0") {
+                    result = "";
+                    equaled = false;
+                }
+                result += input;
+            } else if (input.match(opPattern)) {
+                if (result[result.length - 1].match(opPattern)) {
+                    result = result.substring(0, result.length - 1) + input;
+                } else {
+                    result += input;
+                }
+                equaled = false;
+            } else if (input.match(eqPattern)) {
+                try {
+                    result = eval(result);
+                    equaled = true;
+                } catch (error) {
+                    result = "ERROR";
+                    needClear = true;
+                }
+            } else if (input.match(clearPattern)) {
+                result = "0";
+                needClear = false;
+                equaled = false;
+            }
+            resultDiv.innerHTML = result;
+        }
+
+        window.onload = function () {
+            var lis = document.getElementsByTagName("li");
+            for (var i = 0; i < lis.length; i++) {
+                var li = lis[i].onmouseup = onInput;
+            }
+        };
+
+        document.onkeyup = function(){
+            console.log(event.key);
+        }
+    </script>
+</body>
+
+</html>

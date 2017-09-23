@@ -1,0 +1,29 @@
+<head>
+    <!-- <meta http-equiv="refresh" content="2"> -->
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <link href='http://fonts.font.im/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+        div button {
+            padding: 10px;
+            font-size: 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>显示弹框</h3>
+    <div> <button onclick="changeTitle();">改变标题</button>
+        <button onclick="showAlert('This is a alert dialog');">提示框</button>
+    </div>
+
+
+    <script src='./asset/js/dialog.js'></script>
+    <script>
+        function changeTitle() {
+            var myHeader = document.querySelector("h3");
+            myHeader.innerHTML = "改变了。。";
+        }
+    </script>
+</body>
