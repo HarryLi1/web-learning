@@ -10,7 +10,7 @@
     <style>
         .calcDiv {
             width: 370px;
-            height: 370px;
+            height: 430px;
             background-color: dimgray;
             margin: 20px auto;
             color: white;
@@ -68,22 +68,27 @@
         <div class="resultDiv">0</div>
         <div>
             <ul>
+                <!-- <li>CE</li> -->
+                <li></li>
+                <li>C</li>
+                <li>←</li>
+                <li>+</li>
                 <li>7</li>
                 <li>8</li>
                 <li>9</li>
-                <li>+</li>
+                <li>-</li>
                 <li>4</li>
                 <li>5</li>
                 <li>6</li>
-                <li>-</li>
+                <li>*</li>
                 <li>1</li>
                 <li>2</li>
                 <li>3</li>
-                <li>*</li>
-                <li>0</li>
-                <li>C</li>
-                <li>=</li>
                 <li>/</li>
+                <li>±</li>
+                <li>0</li>
+                <li>.</li>
+                <li>=</li>
             </ul>
         </div>
     </div>
@@ -93,8 +98,8 @@
         var needClear = false;
         var equaled = false;
 
-        function onInput() {
-            var input = this.innerHTML;
+        function onInput(btn) {
+            var input = btn;
             var result = resultDiv.innerHTML;
 
             if (needClear) {
@@ -104,15 +109,18 @@
 
             console.log(input);
 
-            var digitalPattern = /\d/;
-            var opPattern = /[\+\-\*\/]/;
-            var eqPattern = /=/;
-            var clearPattern = /C/;
+            var digitalPattern = /^[0-9.]$/;
+            var opPattern = /^[\+\-\*\/]$/;
+            var eqPattern = /^=$/;
+            var clearPattern = /^C$/;
+            var clearElementPattern = /^CE$/;
+            var backPattern = /^←$/;
             if (input.match(digitalPattern)) {
                 if (equaled || result == "0") {
                     result = "";
                     equaled = false;
                 }
+                if (input == "." && result == "") result = "0";
                 result += input;
             } else if (input.match(opPattern)) {
                 if (result[result.length - 1].match(opPattern)) {
@@ -133,6 +141,9 @@
                 result = "0";
                 needClear = false;
                 equaled = false;
+            } else if (input.match(backPattern)) {
+                result = result.substring(0, result.length - 1);
+                if (result == "") result = "0";
             }
             resultDiv.innerHTML = result;
         }
@@ -140,12 +151,21 @@
         window.onload = function () {
             var lis = document.getElementsByTagName("li");
             for (var i = 0; i < lis.length; i++) {
-                var li = lis[i].onmouseup = onInput;
+                var li = lis[i].onmouseup = function () {
+                    var cmd = this.innerHTML;
+                    onInput(cmd);
+                };
             }
         };
 
-        document.onkeyup = function(){
+        document.onkeyup = function () {
             console.log(event.key);
+
+            var key = event.key;
+            if (key == "Enter") key = "=";
+            else if (key == "Delete") key = "C";
+
+            onInput(key);
         }
     </script>
 </body>
