@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>React App</title>
+<meta name="author" content="(wei wu)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="ReactApp">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">React App</h1><h2 class="author">wei wu</h2><p class="date">Created: 2017-10-27 Fri 18:51</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org5aeee20">React App</a></li>
+<li><a href="#/slide-orgce21f56">hello.js功能改写JsBasicContainer</a></li>
+<li><a href="#/slide-org994cc1c">把Calc改成React Component</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org5aeee20">
+<h2 id="org5aeee20">React App</h2>
+<p>
+把Hello项目改成React项目
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgce21f56">
+<h2 id="orgce21f56">hello.js功能改写JsBasicContainer</h2>
+<div class="outline-text-2" id="text-orgce21f56">
+</div></section>
+<section id="slide-org884ce48">
+<h3 id="org884ce48">hello.js createItem部分改成JSX : v0.1.123</h3>
+</section>
+<section id="slide-org0897cfd">
+<h3 id="org0897cfd">改写createJsBasic中内容: v0.1.124</h3>
+<ul>
+<li>ES6 string template</li>
+
+</ul>
+<p>
+<a href="./JavaScript高级.html">ES6-string template</a>
+</p>
+
+</section>
+<section id="slide-org341141c">
+<h3 id="org341141c">改写事件响应和Result部分</h3>
+<ul>
+<li>React State</li>
+
+</ul>
+<p>
+<a href="./React.html">React State</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org994cc1c">
+<h2 id="org994cc1c">把Calc改成React Component</h2>
+<div class="outline-text-2" id="text-org994cc1c">
+</div></section>
+<section id="slide-org174f83e">
+<h3 id="org174f83e">添加CalcContainer.stories 到 storybook : v0.1.131</h3>
+</section>
+<section id="slide-orgb226066">
+<h3 id="orgb226066">把ThemeSelect改成React Component : v0.1.132</h3>
+<div class="outline-text-3" id="text-orgb226066">
+</div></section>
+<section id="slide-org388ede3">
+<h4 id="org388ede3">PropTypes Typecheck</h4>
+<p>
+<a href="./React.html">  React PropTyes Check</a>
+</p>
+
+</section>
+<section id="slide-org475ebe0">
+<h4 id="org475ebe0">添加bootstrap</h4>
+<ul>
+<li>DOM 和 VDOM
+<a href="./JavaScript高级.html">DOM 和 VDOM</a></li>
+
+<li>Component Lifestyle</li>
+
+</ul>
+<p>
+<a href="./React.html">React Component 生命周期</a>
+</p>
+</section>
+<section id="slide-org6759c1f">
+<h3 id="org6759c1f">实现ThemeSelect的功能，并在Calc使用: v0.1.133</h3>
+</section>
+<section id="slide-orgacbef0e">
+<h3 id="orgacbef0e">修改Pad 改成 React Component</h3>
+<div class="outline-text-3" id="text-orgacbef0e">
+</div></section>
+<section id="slide-org64820c4">
+<h4 id="org64820c4">添加Pad story                       :v0.1.134</h4>
+</section>
+<section id="slide-org60c8804">
+<h4 id="org60c8804">在Pad story里添加测试数据 layout.json :v0.1.134</h4>
+</section>
+<section id="slide-orgb710c9e">
+<h4 id="orgb710c9e">先把createXXX函数挪到class Pad里 : v0.1.134</h4>
+</section>
+<section id="slide-orgf68e405">
+<h4 id="orgf68e405">json-loader读取layout.json文件  : v0.1.134</h4>
+</section>
+<section id="slide-orga15b63d">
+<h4 id="orga15b63d">添加Input和按钮点击响应          : v0.1.135</h4>
+</section>
+<section id="slide-orgce1d60f">
+<h4 id="orgce1d60f">实现ThemeSelect和Pad布局联动    : v0.1.136</h4>
+</section>
+<section id="slide-org279ffad">
+<h4 id="org279ffad">添加ajaxClient，用state更新Result的显示: v0.1.137</h4>
+</section>
+</section>
+</div>
+</div>
+<p> Created by wuwei. </p>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

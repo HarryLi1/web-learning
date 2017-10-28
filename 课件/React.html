@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>React</title>
+<meta name="author" content="(wei wu)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="React">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">React</h1><h2 class="author">wei wu</h2><p class="date">Created: 2017-10-27 Fri 18:51</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgf3be82e">简介</a></li>
+<li><a href="#/slide-org2a9ae0b">Hello World</a></li>
+<li><a href="#/slide-orgb86a100">JSX</a></li>
+<li><a href="#/slide-org6fec4e3">React Component</a></li>
+<li><a href="#/slide-orgdb5ca42">React-Router 4.0</a></li>
+<li><a href="#/slide-org910f5dc">State</a></li>
+<li><a href="#/slide-orgf92159a">Storybook@3</a></li>
+<li><a href="#/slide-org2291433">PropTypes类型检查</a></li>
+<li><a href="#/slide-orge5d5b14">生命周期</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-orgf3be82e">
+<h2 id="orgf3be82e">简介</h2>
+<div class="outline-text-2" id="text-orgf3be82e">
+</div></section>
+<section id="slide-orga498415">
+<h3 id="orga498415">前端框架</h3>
+</section>
+<section id="slide-orga6b8ea1">
+<h3 id="orga6b8ea1">ReactJS和React Native</h3>
+<pre  class="example">
+ReactJS 基于浏览器api
+</pre>
+
+<pre  class="example">
+React Native 基于本地（android，ios）api
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-org2a9ae0b">
+<h2 id="org2a9ae0b">Hello World</h2>
+<div class="outline-text-2" id="text-org2a9ae0b">
+</div></section>
+<section id="slide-org75ac6a2">
+<h3 id="org75ac6a2">安装React</h3>
+<pre  class="example">
+npm install --save react react-dom
+</pre>
+
+</section>
+<section id="slide-orga301e30">
+<h3 id="orga301e30">bable插件</h3>
+<ul>
+<li>安装</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre  class="src src-sh">npm install --save-dev babel-preset-react babel-preset-es2015
+</pre>
+</div>
+
+<ul>
+<li>配置.babelrc</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-sh"><span style="color: #4f97d7;">{</span>
+  <span style="color: #2d9574;">"presets"</span>: <span style="color: #bc6ec5;">[</span><span style="color: #2d9574;">"es2015"</span>,<span style="color: #2d9574;">"react"</span><span style="color: #bc6ec5;">]</span>
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-org4dc03e8">
+<h3 id="org4dc03e8">webpack</h3>
+<pre  class="example">
+module.exports = {
+...
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          'babel-loader'
+        ],
+        include: [
+            path.resolve(__dirname,'src')
+        ]
+      }
+    ]
+  }
+}
+</pre>
+
+</section>
+<section id="slide-orgc207b19">
+<h3 id="orgc207b19">添加react代码</h3>
+<div class="outline-text-3" id="text-orgc207b19">
+</div></section>
+<section id="slide-org06ffdab">
+<h4 id="org06ffdab">index.html</h4>
+<pre  class="example">
+&lt;body&gt;
+   &lt;div id="root"&gt;&lt;/div&gt;
+   ... 
+&lt;/body&gt;
+</pre>
+
+</section>
+<section id="slide-org46fba27">
+<h3 id="org46fba27">index.js</h3>
+<ul>
+<li>文件头部</li>
+
+</ul>
+<pre  class="example">
+import React from 'react';
+import ReactDOM from 'react-dom';
+</pre>
+<ul>
+<li>文件内容</li>
+
+</ul>
+<pre  class="example">
+function hello () {
+  return &lt;h1&gt;Hello,world&lt;/h1&gt;;
+}
+const root = hello();
+ReactDOM.render(
+  root,
+  document.getElementById('root')
+);
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb86a100">
+<h2 id="orgb86a100">JSX</h2>
+<div class="outline-text-2" id="text-orgb86a100">
+</div></section>
+<section id="slide-orgf69db78">
+<h3 id="orgf69db78">基本语法 : v0.1.113</h3>
+<pre  class="example">
+const element = &lt;h1&gt;Hello,world&lt;/h1&gt;;
+</pre>
+
+</section>
+<section id="slide-orgde48434">
+<h3 id="orgde48434">可以内嵌表达式 : v0.1.114,v0.1.115</h3>
+<pre  class="example">
+const item_href = 'src/html_element/html_element_category.html';
+const item_text = 'HTML元素分类'
+const nav_item = &lt;p&gt;&lt;a href={item_href}&gt;{item_text}&lt;/a&gt;&lt;/p&gt;
+</pre>
+
+</section>
+<section id="slide-org6932940">
+<h3 id="org6932940">class和className</h3>
+<pre  class="example">
+//HTML字符串
+const element_raw_html = '&lt;h1 class='greeting'&gt;Hello&lt;/h1&gt;';
+//JSX
+const element_jsx = &lt;h1 className='greeting'&gt;Hello&lt;/h1&gt;;
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-org6fec4e3">
+<h2 id="org6fec4e3">React Component</h2>
+<div class="outline-text-2" id="text-org6fec4e3">
+</div></section>
+<section id="slide-org5e61ecb">
+<h3 id="org5e61ecb">Functional Components : v0.1.116</h3>
+<pre  class="example">
+function NavSideBar(props){
+  return &lt;nav&gt;{props.items}&lt;/nav&gt;
+}
+</pre>
+</section>
+<section id="slide-orga64ed3f">
+<h3 id="orga64ed3f">Class Components : v0.1.117</h3>
+<pre  class="example">
+class NavSideBar extends React.Component{
+  render(){
+     return &lt;nav&gt;{this.props.items}&lt;/nav&gt;
+  }
+}
+</pre>
+
+</section>
+<section id="slide-org84d9457">
+<h3 id="org84d9457">事件处理 : v0.1.119</h3>
+<ul>
+<li>HTML事件处理</li>
+
+</ul>
+<pre  class="example">
+&lt;a href="#" onclick="console.log('clicked'); return false"&gt;Click me&lt;/a&gt;
+</pre>
+
+<ul>
+<li>JSX</li>
+
+</ul>
+<pre  class="example">
+function ActionLink(){
+  function handleClick(e){
+    e.preventDefault();//相当HTML的 return false
+    console.log('clicked');
+  }
+  return (
+    &lt;a href="#" onClick={handleClick}&gt; //handleClick not handleClick()
+       Click me
+    &lt;/a&gt;
+  )
+}
+</pre>
+
+</section>
+<section id="slide-org25194c9">
+<h3 id="org25194c9">props</h3>
+<p>
+React component之前传递参数
+</p>
+</section>
+<section id="slide-org5d959fd">
+<h3 id="org5d959fd">自定义组件首字符必须大写</h3>
+<pre  class="example">
+//right
+&lt;MyComponent /&gt;
+//error
+&lt;myComponent /&gt;
+</pre>
+</section>
+<section id="slide-org366cb73">
+<h3 id="org366cb73">{} 和 ()</h3>
+<pre  class="example">
+const component = ()=&gt;{
+   return &lt;MyComponent /&gt;
+}
+等价
+const component = ()=&gt;（
+   &lt;MyComponent /&gt;
+)
+</pre>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgdb5ca42">
+<h2 id="orgdb5ca42">React-Router 4.0</h2>
+<div class="outline-text-2" id="text-orgdb5ca42">
+</div></section>
+<section id="slide-org6a0b004">
+<h3 id="org6a0b004">安装</h3>
+<pre  class="example">
+npm install --save-dev react-router-dom
+</pre>
+</section>
+<section id="slide-org8aac651">
+<h3 id="org8aac651">Router</h3>
+</section>
+<section id="slide-org7869946">
+<h3 id="org7869946">Link</h3>
+<p>
+相当于href
+</p>
+</section>
+<section id="slide-org65d13a4">
+<h3 id="org65d13a4">Route</h3>
+<p>
+定义路径和React Component的关系
+</p>
+</section>
+<section id="slide-org02ab7a5">
+<h3 id="org02ab7a5">父子关系的Route : v0.1.121,v0.1.122</h3>
+<p>
+App和其他页面的关系
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org910f5dc">
+<h2 id="org910f5dc">State</h2>
+<div class="outline-text-2" id="text-org910f5dc">
+</div></section>
+<section id="slide-orgf744ac8">
+<h3 id="orgf744ac8">定义</h3>
+<pre  class="example">
+class MyComponent extends React.Component{
+   constructor(props){
+     super(props);
+     this.state={
+       result: ""
+     }
+   }
+}
+</pre>
+
+</section>
+<section id="slide-orgd4e3ae4">
+<h3 id="orgd4e3ae4">访问</h3>
+<pre  class="example">
+//read
+const value = this.state.result;
+//write
+this.setState({result: '1'})
+</pre>
+
+</section>
+<section id="slide-org056dcfc">
+<h3 id="org056dcfc">更新State，就更新组件界面</h3>
+</section>
+<section id="slide-orgf605523">
+<h3 id="orgf605523">State，Prop异步更新</h3>
+<p>
+之前的状态不能直接用来计算后面的状态
+</p>
+
+<pre  class="example">
+//wrong
+this.setState({
+  result: this.state.result + this.props.some
+})
+//right
+this.setState({prevState,props)=&gt;({
+  result: prevState.result + this.props.some
+})
+</pre>
+
+</section>
+<section id="slide-org6d0fb23">
+<h3 id="org6d0fb23">State只在Component内部有效</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf92159a">
+<h2 id="orgf92159a">Storybook@3</h2>
+<pre  class="example">
+npm i -g @storybook/cli
+getstorybook
+</pre>
+
+<pre  class="example">
+npm  i -D babel-preset-es2015
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-org2291433">
+<h2 id="org2291433">PropTypes类型检查</h2>
+<p>
+<a href="https://reactjs.org/docs/typechecking-with-proptypes.html">https://reactjs.org/docs/typechecking-with-proptypes.html</a>
+</p>
+
+<pre  class="example">
+MyComponent.propTypes = {
+  oArray: PropTypes.array,
+  ....
+}
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-orge5d5b14">
+<h2 id="orge5d5b14">生命周期</h2>
+<div class="outline-text-2" id="text-orge5d5b14">
+</div></section>
+<section id="slide-orgfd313cb">
+<h3 id="orgfd313cb">ComponentDidMount</h3>
+<p>
+组件被render到DOM后调用
+</p>
+
+</section>
+<section id="slide-orge6ea960">
+<h3 id="orge6ea960">ComponentWillUnmount</h3>
+<p>
+组件从DOM卸载之前
+</p>
+</section>
+</section>
+</div>
+</div>
+<p> Created by wuwei. </p>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
